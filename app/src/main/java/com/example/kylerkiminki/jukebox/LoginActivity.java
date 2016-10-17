@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_CODE = 1337;
-    private static final String REDIRECT_URI = "yourcustomprotocol://callback";
+    private static final String REDIRECT_URI = "testschema://callback";
     private static final String CLIENT_ID = "0e7a6cdb075c465b950fe15dd7124a4f";
 
     @Override
@@ -55,7 +55,10 @@ public class LoginActivity extends AppCompatActivity {
             switch (response.getType()) {
                 // Response was successful and contains auth token
                 case TOKEN:
+                    Bundle bundle = new Bundle();
+                    bundle.putString("AccessToken", response.getAccessToken());
                     Intent i = new Intent(this, PlayerActivity.class);
+                    i.putExtras(bundle);
                     startActivity(i);
                     break;
 
