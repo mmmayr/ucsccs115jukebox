@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             switch (response.getType()) {
                 // Response was successful and contains auth token
                 case TOKEN:
+                    Log.d(TAG, "Login success");
                     Bundle bundle = new Bundle();
                     bundle.putString("AccessToken", response.getAccessToken());
                     Intent i = new Intent(this, PlayerActivity.class);
